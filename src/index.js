@@ -7,7 +7,7 @@ const refs = {
   cardContainer: document.querySelector('.js-card-container')
 }
 
-fetch('https://restcountries.eu/rest/v2/name/Canada').then(responce => {
+fetch('https://restcountries.eu/rest/v2/name/Ukraine').then(responce => {
   return responce.json();
 })
 .then(country => {
