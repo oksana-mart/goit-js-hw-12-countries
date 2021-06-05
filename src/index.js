@@ -4,18 +4,32 @@ import countryCard from './templates/countryCard.hbs';
 //import countriesList from './templates/countriesList.hbs';
 
 const refs = {
-  cardContainer: document.querySelector('.js-card-container')
+  cardContainer: document.querySelector('.js-card-container'),
+  inputSearch: document.querySelector('.js-input-search')
+};
+
+refs.inputSearch.addEventListener('input', onInputSearch);
+
+function onInputSearch(e) {
+  e.preventDefault();
+
+  const searchQuery = e.currentTarget.value;
+  console.log(searchQuery);
+
+  fetchCountry(searchQuery)
+    .then(renderCountryCard)
+    .catch(error => console.log(error));
 }
 
-fetch('https://restcountries.eu/rest/v2/name/Ukraine').then(responce => {
-  return responce.json();
-})
-.then(country => {
-  console.log(country);
+function fetchCountry(countryName) {
+  return fetch(`https://restcountries.eu/rest/v2/name/${countryName}`).then(responce => {
+    return responce.json(); 
+  },
+  );
+}
+
+function renderCountryCard (country) {
   const markup = countryCard(...country);
-  console.log(markup);
   refs.cardContainer.innerHTML = markup;
-})
-.catch(error => {
-  console.log(error);
-});
+}
+
