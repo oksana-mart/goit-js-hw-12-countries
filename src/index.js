@@ -24,8 +24,7 @@ function onInputSearch(e) {
   }
   API.fetchCountry(searchQuery)
     .then(renderCountryCard)
-    .catch(onFetchError)
-    .finally(() => refs.inputSearch.value = '');
+    .catch(onFetchError);
 }
 
 function renderCountryCard(country) {
