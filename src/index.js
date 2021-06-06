@@ -22,7 +22,7 @@ function onInputSearch(e) {
     refs.cardContainer.innerHTML = '';
     return;
   }
-  API.fetchCountry(searchQuery)
+  API.fetchCountries(searchQuery)
     .then(renderCountryCard)
     .catch(onFetchError);
 }
