@@ -19,6 +19,8 @@
     "url": "https://github.com/oksana-mart/goit-js-hw-12-countries"
   },
   "devDependencies": {
+    "@pnotify/bootstrap4": "^5.2.0",
+    "@pnotify/confirm": "^5.2.0",
     "@pnotify/core": "^5.2.0",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
@@ -27,6 +29,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "@pnotify/mobile": "^5.2.0",
     "gh-pages": "^3.2.0",
     "handlebars": "^4.7.7",
     "lodash.debounce": "^4.0.8"
