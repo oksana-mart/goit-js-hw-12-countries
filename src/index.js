@@ -25,7 +25,10 @@ function onInputSearch(e) {
 
   const searchQuery = e.target.value;
   console.log(searchQuery);
-
+  if (searchQuery.length === 0) {
+    return refs.cardContainer.innerHTML = '';
+    
+  }
   API.fetchCountry(searchQuery)
     .then(renderCountryCard)
     .catch(onFetchError);
@@ -43,7 +46,7 @@ function renderCountryCard(country) {
   }
   else if (country.length === 1) {
     const markup = countryCard(...country);
-    console.log(markup);
+    //console.log(markup);
     refs.cardContainer.innerHTML = markup;
   }
 }
