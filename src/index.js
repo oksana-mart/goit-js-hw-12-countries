@@ -2,22 +2,22 @@ import './index.css';
 import API from './js/fetchCountries.js';
 import countryCard from './templates/countryCard.hbs';
 import countriesList from './templates/countriesList.hbs';
+import debounce from 'lodash.debounce';
 import { alert } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import '@pnotify/core/dist/BrightTheme.css';
 
 const refs = {
-  debounce: require('lodash.debounce'),
   cardContainer: document.querySelector('.js-card-container'),
   inputSearch: document.querySelector('.js-input-search')
 };
 
-refs.inputSearch.addEventListener('input', refs.debounce(onInputSearch, 500));
+refs.inputSearch.addEventListener('input', debounce(onInputSearch, 500));
 
 function onInputSearch(e) {
   e.preventDefault();
-  const searchQuery = e.target.value;
-
+  const searchQuery = e.target.value.trim();
+  refs.cardContainer.innerHTML = '';
   if (searchQuery.length === 0) {
     refs.cardContainer.innerHTML = '';
     return;
@@ -41,6 +41,6 @@ function renderCountryCard(country) {
   }
 }
 
-function onFetchError(error) {
+function onFetchError() {
   alert('Something is wrong! Try again!');
 }
