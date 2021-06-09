@@ -19,7 +19,6 @@ function onInputSearch(e) {
   const searchQuery = e.target.value.trim();
   refs.cardContainer.innerHTML = '';
   if (searchQuery.length === 0) {
-    refs.cardContainer.innerHTML = '';
     return;
   }
   API.fetchCountries(searchQuery)
